@@ -48,14 +48,59 @@
       min-height: 600px;
     }
   </style>
+  <script>
+    // Автоматическое добавление UTM в widget_key
+    (function() {
+      const script = document.getElementById("aeWidgetScript");
+      if (!script) return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const utm = [];
+
+      urlParams.forEach((value, key) => {
+        if (key.startsWith("utm_")) utm.push(key + "=" + value);
+      });
+
+      if (utm.length > 0) {
+        script.src += "&" + utm.join("&");
+      }
+    })();
+  </script>
+
+  <style>
+    .contact-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .contact-buttons a {
+      padding: 12px 18px;
+      background: #ff3e8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .contact-buttons a:hover {
+      background: #e7357f;
+    }
+  </style>
+
 </head>
 <body>
 
   <div class="container">
     <h1>Запись на занятия</h1>
 
+<div class="contact-buttons">
+  <a href="https://wa.me/79999999999" target="_blank">WhatsApp</a>
+  <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
+</div>
+
     <div class="widget-wrapper">
-      YOUR_APPEVENT_WIDGET_CODE
+      <script id="aeWidgetScript" type="text/javascript" src="//appevent.ru/widgets/widgethandle.min.js?widget_key=42fc4357640f5b2142ac18605a11c7a0" async=true charset="UTF-8"></script>
     </div>
   </div>
 
